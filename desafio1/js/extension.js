@@ -5,7 +5,7 @@ let resultado;
 let texto1, texto2;
 
 nombre = prompt("1 - Introduzca su nombre por favor")
-alert("Hola " + nombre + ", como estas? Bienvenido a " + centroFromacion)
+alert("Hola " + nombre + ", como estas? Bienvenido a " + centroFromacion);
 
 
 alert("2 - Por favor introduzca un numero para concatenarlo con '10'");
