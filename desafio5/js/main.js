@@ -122,7 +122,7 @@ if (kilometros < 10) {
 }
 console.log(producto)*/
 
-class productos{
+/*class productos{
     constructor(nombre,precio,disponible,caracteristicas,stock){
         this.nombre = nombre;
         this.precio = precio;
@@ -171,4 +171,5 @@ const mochila = new productos("mochila",100,true,"espacioso",100)
 //mochila.comprar()
 //mochila.comprar()
 //mochila.comprar()
-//mochila.proveedor(100)
+//mochila.proveedor(100)*/
+
