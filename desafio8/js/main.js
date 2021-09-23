@@ -53,4 +53,22 @@ elementos.forEach((elemento) => {
     DIV_ELEMENTOS.appendChild(DIV_ELEMENTO);
 });
 
-const INPUT = document.querySelector(`#input`)
+const INPUT = document.querySelector(`#input`);
+const INPUT2 = document.querySelector(`#input2`);
+
+INPUT2.addEventListener('click', (e)=>console.log(e.target.value))
+
+const SELECTION = document.querySelector("#select")
+const marcas = ["NIKE", "ADDIDAS", "PUMA", "NEW BALANCA"];
+
+marcas.forEach(marca => {
+    const OPTION = document.createElement("option");
+    OPTION.textContent = marcas;
+    OPTION.value = marca
+    console.log(OPTION)
+    SELECTION.appendChild(OPTION)
+})
+
+SELECTION.addEventListener("change", (e) =>{
+    console.log(e);
+})
