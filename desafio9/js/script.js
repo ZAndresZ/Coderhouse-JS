@@ -21,7 +21,6 @@ const render = (elegir,nodo) =>{
     elegir.forEach(el => {
         acumulador +=
         <div class="card" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
 				<div class="card-body">
 				  <h5 class="card-title" id="cardTitle">${el.nombre}</h5>
 				  <p class="card-text" id="cardText">${el.info}</p>
