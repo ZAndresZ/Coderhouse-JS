@@ -1,6 +1,6 @@
 # Pagina del Juego "Titanfall 2" redisigned
 
-Proyecto de desarrollo web creado por Andres Zhong
+Proyeccreado por Andres Zhong
 
 Contiene informaciones acerca del juego, y de su componentes
 
