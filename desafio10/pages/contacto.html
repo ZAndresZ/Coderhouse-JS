@@ -45,44 +45,36 @@
 
     <section class="contacto">
         <br>
-        <h1 class="contacto__nombre">Sientese libre de dejarnos su opinion</h1>
-        <br>
-        <form action="">
-            <label for="nombre">Nombre: </label>
-            <input type="text" name="nombre" placeholder="Ingrese su nombre" maxlength="20" required><br><br>
-            <label for="apellido">Apellido: </label>
-            <input type="text" name="apellido" placeholder="Ingrese su apellido" maxlength="20" required><br><br>
-            <label for="email">Email: </label>
-            <input type="email" name="mail" placeholder="Ingrese su direccion de email" max="50" required><br><br>
-            <label for="radio">Elija su genero</label>
-            <br>
-
-            <input type="radio" value="hombre" name="Genero"> Hombre
-            <input type="radio" value="mujer" name="Genero"> mujer
-            <br><br>
-
-            <label for="region">Selecione su region</label><br>
-            <select name="region" id="">
-                <option value="vacio">Selecione su region</option>
-                <option value="Africa">Africa</option>
-                <option value="America">America</option>
-                <option value="Aisa">Asia</option>
-                <option value="Europa">Europa</option>
-                <option value="Oceania">Oceania</option>
-         </select>
-        <br><br>
-
-            <div>
-                <label for="comentarios">Deje su opinion por aqui abajo</label>
-                <br><textarea name="comentarios" id="" cols="30" rows="10"></textarea>
-                <br>
-        
-                <label for="termino">Aceptar los terminos</label>
-                <input type="checkbox" name="terminos">
-                <br><br>
-                <input type="submit" value="Enviar">
+        <div id="productoForms">
+            <form id="agregarForm">
+                <h2>Agregar Producto</h2>
+            <div class="mb-3">
+              <label for="" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="agregarNombre" >
+             
             </div>
-         <br>
+            <div class="mb-3">
+                <label for="" class="form-label">Precio</label>
+                <input type="text" class="form-control" id="agregarPrecio" >
+               
+              </div>
+            <button id="btnAgregar" type="submit" class="btn btn-primary">Agregar</button>
+            </form>
+            <form id="eliminarForm">
+                <h2>Eliminar Producto</h2>
+                <div class="mb-3">
+                  <label for="" class="form-label">Nombre</label>
+                 <select name="" id="eliminarProductos">
+                    
+                 </select>
+                 
+                </div>
+                <button id="btnEliminar" type="submit" class="btn btn-primary">Eliminar</button>
+            </form>
+            
+        
+    
+        </div>
     </section>
     <br><br>
     <hr>
