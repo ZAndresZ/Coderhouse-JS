@@ -1,0 +1,37 @@
+@import "color";
+/*botones flotantes*/
+#btn-mas{
+    display: none;
+}
+.redesSocialesFlotantes{
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+}
+.redes a, .btn-mas label{
+    display: block;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+.btn-mas label{
+    opacity: 0.85;
+}
+.btn-mas label:hover{
+    opacity: 1;
+}
+.redes a{
+    margin-bottom: -60px;
+    opacity: 0;
+    visibility: hidden;
+}
+#btn-mas:checked~ .redes a{
+    margin-bottom: 5px;
+    opacity: 1;
+    visibility: visible;
+}
+.btn-mas label{
+    cursor: pointer;
+}
+#btn-mas:checked ~ .btn-mas label{
+    font-size: 25px;
+}

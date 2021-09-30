@@ -1,0 +1,125 @@
+body,
+body * {
+    vertical-align: baseline;
+    border: 0 none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.dynamicAdvertContainer {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    background: #EEE;
+    overflow: hidden;
+}
+
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border: 0;
+}
+
+#dco_jsonUrl {
+	display: none;
+}
+
+#exit{
+    z-index: 5;
+}
+
+
+/* preloader stylesheet */
+#loading-screen {
+    display: table-cell;
+    overflow: hidden;
+    width: 160px;
+    height: 600px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#loading-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+
+}
+
+#loading-ring {
+    display: block;
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    margin-top: -17px;
+    margin-left: -17px;
+    left: 50%;
+    top: 17px;
+    transform-style: preserve-3d;
+    transform: rotate(0deg);
+    animation: loading-animation-keyframes 1s infinite steps(24, end) infinite;
+}
+
+#loading-logo {
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+    margin-left: -7px;
+    left: 50%;
+    top: 17px;
+}
+
+#loading-text {
+    display: block;
+    position: absolute;
+    width: 36px;
+    height: 11px;
+    top: 38px;
+    left: 50%;
+    margin-top: 0px;
+    margin-left: -18px;
+}
+
+#exit {
+    z-index: 5 !important;
+}
+
+@-webkit-keyframes loading-animation-keyframes {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes loading-animation-keyframes {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#loading-display .loading-animation {
+    -webkit-animation: loading-animation-keyframes 1s steps(24, end) infinite;
+    animation: loading-animation-keyframes 1s steps(24, end) infinite;
+}
+/* preloader stylesheet end */

@@ -1,0 +1,140 @@
+$(function() {
+    var i = {
+        init: function() {
+	   if(!isMobile){
+            	if( estamos=="search"  || estamos=="iconset"){
+			this.placeholder(),
+			this.attach() 
+		}else{
+			this.fetch()
+		}
+		}
+        },
+        placeholder: function() {
+		var retrasar=0;
+		if($( "#bsa-placeholder-search" ).length && estamos=="search")retrasar=$(".icon-preview").height();
+            if (!(0 < $("#istockphoto-placeholder").length) && 0 !== $(".icon-grid").length) {
+                var t = $(".icon-grid .icon-preview"),
+                    e = Math.round($(".icon-grid").width() / $(".icon-preview").width()),
+                    i = $(window).height() - $(".icon-grid").offset().top + retrasar,
+                    o = Math.ceil(i / $(".icon-preview").height()),
+                    n = Math.floor(t.length / e);
+                n < o && (o = n);
+                var r = e * o,
+                    a = $("<div />", {
+                        id: "istockphoto-placeholder"
+                    });
+                r > t.length && (r = t.length), t.eq(r - 1).after(a)
+            }
+        },
+        in_view: function() {
+	if(adBlock=="yes")
+	return 1;
+	else{
+            if (0 === $("#istockphoto-placeholder").length) return !1;
+            var t = $(window).scrollTop(),
+                e = $(window).height(),
+                i = $("#istockphoto-placeholder").offset().top;
+            return i <= e + t
+	}
+        },
+        attach: function() {
+            0 !== $("#istockphoto-placeholder").length && (i.in_view() ? i.fetch() : this.defer())
+        },
+        defer: function() {
+            0 !== $("#istockphoto-placeholder").length && $(window).on("scroll.istock", function() {
+                i.in_view() && (i.fetch(), $(window).off("scroll.istock"))
+            })
+        },
+        search_data: function() {
+	    if(isMobile)num=6;
+	    else {
+		num=30;	
+	    }
+	if(estamos=="search" && adBlock=="yes"){
+	  pag=((parseInt(4)*parseInt(pagInicial))-parseInt(4))+parseInt(istockpintados);
+	}
+            var t = {
+                sort_order: "most_popular",
+                graphical_styles: "illustration,vector",
+                exclude_nudity: "true",
+                orientations: "square",
+                page_size: num,
+		page:pag,
+                fields: "summary_set,referral_destinations",
+                phrase: filtro || ""
+            };
+            return $.extend(t, $("#istockphoto-placeholder").data()), t
+        },
+        fetch: function() {
+            $.ajax({
+                url: "https://api.gettyimages.com/v3/search/images/creative",
+                data: i.search_data(),
+                headers: {
+                    "Api-Key": "sc33cbrwne69k3r4m62uqxq3",
+		    "Accept-Language": idioma
+                },
+                success: function(t) {		  			 
+			if(estamos=="iconpage" && adBlock=="yes"){
+				if(pag==1){
+                        $("#istockphoto-placeholder").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()                         		}
+				if(pag==2){
+				$("#istockphoto-placeholder-vertical").load("../pintaistock_vertical.php", {data:JSON.stringify(t)}), $('#istockphoto-banner-vertical [data-toggle="tooltip"]').tooltip()}
+				if(pag==3){
+				$('#bsa_middle').hide()
+                                $("#istockphoto-placeholder-2").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()
+				}
+				if(pag==4){
+                                $('#bsa-bottom').hide()
+                                $("#istockphoto-placeholder-3").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()
+                                }
+				pag=pag+1
+				if(pag<5)
+				i.init()	
+			}
+			else if (estamos=="search" && adBlock=="yes"){
+                                if(istockpintados==1){				
+                                $("#istockphoto-placeholder-top").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()
+		$('#bsa-top').hide()
+				}
+				if(istockpintados==2){                          
+			
+				$("#bsa-placeholder-search").attr("id","merda");
+                                $("#merda").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()
+                                }
+				if(istockpintados==3){                          
+                                $("#istockphoto-placeholder").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()
+                                }
+				if(istockpintados==4){
+                                $("#istockphoto-placeholder-bottom").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()
+                $('#bsa-bottom').hide()
+                                }
+                                istockpintados=parseInt(istockpintados)+parseInt(1)
+                                if(istockpintados<5)
+                                i.init()
+                        }else{
+			$("#istockphoto-placeholder").load("../pintaistock.php", {data:JSON.stringify(t)}), $('#istockphoto-banner [data-toggle="tooltip"]').tooltip()	
+			}
+			
+                }
+            })
+        },
+    };
+    i.init(), $(document).on("search.results", function() {
+        i.init()
+    })
+});
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};

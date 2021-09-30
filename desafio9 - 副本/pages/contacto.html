@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="Contacto" content="Forma de contactar con nosotros">
+    <meta name="keywords" content="Informacion, Contacto">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y formulario</title>
+    <link rel="stylesheet" href="../css/estiloDeMiPagina.css">
+
+    <!--iconos-->
+    <link rel="icon" href="../images/iconos/logoTitanFall/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../images/iconos/logoTitanFall/favicon.ico" type="image/x-icon"/>
+</head>
+
+<body>
+    <header>
+        <nav class="gradienteHeader">
+            <br><br>
+            <a href="../index.html"><img class="header__logo--secundaria" src="../images/logos/tf2Logo.png" alt="Logotipo De Titanfall 2"></a>
+            <br>
+            <ul class="menuHtml">
+                <li><a href="../index.html">Inicio</a> </li>
+                <li><a href="piloto.html">Piloto</a></li>
+                <li><a href="titan.html">Titan</a>
+                    <ul>
+                        <li><a href="https://titanfall.fandom.com/wiki/Ion">Ion</a></li>
+                        <li><a href="https://titanfall.fandom.com/wiki/Scorch">Scorch</a></li>
+                        <li><a href="https://titanfall.fandom.com/wiki/Northstar">Northstar</a></li>
+                        <li><a href="https://titanfall.fandom.com/wiki/Ronin">Ronin</a></li>
+                        <li><a href="https://titanfall.fandom.com/wiki/Tone">Tone</a></li>
+                        <li><a href="https://titanfall.fandom.com/wiki/Legion">Legion</a></li>
+                        <li><a href="https://titanfall.fandom.com/wiki/Monarch">Monarch</a></li>
+                    </ul>
+                </li>
+                <li><a href="conceptArt.html">Art</a></li>
+
+                <li><a href="contacto.html">Info</a></li>
+            </ul>
+        </nav>
+        <br>
+    </header>
+    <hr>
+
+    <section class="contacto">
+        <br>
+        <h1 class="contacto__nombre">Sientese libre de dejarnos su opinion</h1>
+        <br>
+        <form action="">
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" placeholder="Ingrese su nombre" maxlength="20" required><br><br>
+            <label for="apellido">Apellido: </label>
+            <input type="text" name="apellido" placeholder="Ingrese su apellido" maxlength="20" required><br><br>
+            <label for="email">Email: </label>
+            <input type="email" name="mail" placeholder="Ingrese su direccion de email" max="50" required><br><br>
+            <label for="radio">Elija su genero</label>
+            <br>
+
+            <input type="radio" value="hombre" name="Genero"> Hombre
+            <input type="radio" value="mujer" name="Genero"> mujer
+            <br><br>
+
+            <label for="region">Selecione su region</label><br>
+            <select name="region" id="">
+                <option value="vacio">Selecione su region</option>
+                <option value="Africa">Africa</option>
+                <option value="America">America</option>
+                <option value="Aisa">Asia</option>
+                <option value="Europa">Europa</option>
+                <option value="Oceania">Oceania</option>
+         </select>
+        <br><br>
+
+            <div>
+                <label for="comentarios">Deje su opinion por aqui abajo</label>
+                <br><textarea name="comentarios" id="" cols="30" rows="10"></textarea>
+                <br>
+        
+                <label for="termino">Aceptar los terminos</label>
+                <input type="checkbox" name="terminos">
+                <br><br>
+                <input type="submit" value="Enviar">
+            </div>
+         <br>
+    </section>
+    <br><br>
+    <hr>
+    <br>
+    <div class="redesSocialesFlotantes">
+        <input type="checkbox" id="btn-mas">
+        <div class="redes">
+            <a href="https://www.ea.com/games/titanfall/titanfall-2?setLocale=en-us"><img src="../images/iconos/iconoWeb.png" alt="Icono de sitio web"></a>
+            <a href="https://www.facebook.com/Titanfallgame"><img src="../images/iconos/iconoFacebook.png" alt="Icono de facebook"></a>
+            <a href="https://www.youtube.com/user/TitanFallGame"><img src="../images/iconos/iconoYouTube.png" alt="Icono de youtube"></a>
+            <a href="https://twitter.com/titanfallgame"><img src="../images/iconos/iconoTwitter.png" alt="Icono de twitter"></a>
+            <a href="https://www.instagram.com/titanfallgame/?hl=es"><img src="../images/iconos/iconoInstagram.png" alt="Icono de instagram"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="icon-mas"><img src="../images/iconos/iconoBombillaLuz.png" alt="Icono de cruz"></label>
+        </div>
+    </div>
+    <div  class="gradienteFooter">
+        <br>
+        <footer>
+            <img src="../images/logos/respwan.png" height="40px" alt="Logotipo De Respawn">
+            <p class="copyright">© 2018 Electronic Arts Inc.</p>
+        </footer>
+        <br>
+    </div>
+ 
+</body>
+</html>
