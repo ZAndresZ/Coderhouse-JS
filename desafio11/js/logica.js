@@ -1,6 +1,5 @@
-
 formLogin.style.display = "block"
-divFormsProductos.style.display = "none"
+divFormsQuejas.style.display = "none"
 btnRegistro.style.display = "none"
 tienda.style.display = "none"
 cerrarSesion.style.visibility = "hidden"
@@ -61,15 +60,15 @@ const crearUsuario = () => {
 const renderizarTienda = () => {
     tienda.style.display = "flex"
 	formLogin.style.display = "none"
-	if (productos != "") {
+	if (quejas != "") {
        
-		for (const producto of productos) {
+		for (const queja of quejas) {
 			
 			let div = $("<div>").append(`<div class="card" style="width: 18rem;">
 			<div class="card-body"> 
-				  <h5 class="card-title">${producto.nombre}</h5>
-				  <p class="card-text"> ${producto.precio}</p>
-				  <button class="btn btn-primary" id="${producto.nombre}">Comprar</button>
+				  <h5 class="card-title">${queja.descripcion}</h5>
+				  <p class="card-text"> ${queja.tiempo}</p>
+				  <button class="btn btn-primary" id="${queja.descripcion}">Comprar</button>
 			</div>
 		  </div>`)
 			$("#tienda").append(div) 
@@ -77,11 +76,11 @@ const renderizarTienda = () => {
 			
 
 		
-		  	document.getElementById(producto.nombre).addEventListener("click",function(e){
+		  	document.getElementById(queja.descripcion).addEventListener("click",function(e){
 				
-				let productoHtml = document.getElementById(e.target.id).parentElement 
-				let producto = new Producto(productoHtml.childNodes[1].textContent,productoHtml.childNodes[3].textContent)
-			    carrito.push(producto)
+				let quejaHtml = document.getElementById(e.target.id).parentElement 
+				let queja = new Queja(quejaHtml.childNodes[1].textContent,quejaHtml.childNodes[3].textContent)
+			    carrito.push(queja)
 			})
 		}
 
@@ -92,19 +91,19 @@ const renderizarTienda = () => {
 }
 
 
-const agregarProducto = () => {
-	let nombreProducto = inputAgregarN.value
-	let precioProducto = inputAgregarP.value
-	let nuevoProducto = new Producto(nombreProducto, precioProducto)
-	productos.push(nuevoProducto)
+const agregarQueja = () => {
+	let descripcionQueja = inputAgregarN.value
+	let tiempoQueja = inputAgregarP.value
+	let nuevoQueja = new Queja(descripcionQueja, tiempoQueja)
+	quejas.push(nuevoQueja)
     
-	localStorage.setItem("productos", JSON.stringify(productos))
+	localStorage.setItem("quejas", JSON.stringify(quejas))
 
 	inputAgregarN.value = ""
 	inputAgregarP.value = ""
 	completarSelect()
 
-	validaciones.innerHTML = "Producto añadido con éxito"	
+	validaciones.innerHTML = "Queja añadido con éxito"	
 	validaciones.style.color = "green"
 	setTimeout(()=>{
 		validaciones.innerHTML = ""
@@ -113,15 +112,15 @@ const agregarProducto = () => {
 
 }
 
-const eliminarProducto = () => {
-	let nombreProducto = selectEliminarP.value
+const eliminarQueja = () => {
+	let descripcionQueja = selectEliminarP.value
 
-	productos = productos.filter(producto => producto.nombre != nombreProducto)
+	quejas = quejas.filter(queja => queja.descripcion != descripcionQueja)
 
-	localStorage.setItem("productos", JSON.stringify(productos))
+	localStorage.setItem("quejas", JSON.stringify(quejas))
 	
 	validaciones.style.color = "green"
-	validaciones.innerHTML = "Producto eliminado con éxito"
+	validaciones.innerHTML = "Queja eliminado con éxito"
 	
 	setTimeout(()=>{
 		validaciones.innerHTML = ""
@@ -141,23 +140,23 @@ const mostrarRegistro = () => {
 const completarSelect = () => {
 	selectEliminarP.innerHTML = ""
 	
-	if(productos != ""){
+	if(quejas != ""){
 
-		for (let producto of productos) {
+		for (let queja of quejas) {
 		
          let option = $("<option>", {
-			value: producto.nombre,
-			text: producto.nombre
+			value: queja.descripcion,
+			text: queja.descripcion
 		 })
 
-		$("#eliminarProductos").append(option)
+		$("#eliminarQuejas").append(option)
 	}
 
-	    formProductoEliminar.style.display = "block"
+	    formQuejaEliminar.style.display = "block"
 
 	}else{
 
-		formProductoEliminar.style.display = "none"
+		formQuejaEliminar.style.display = "none"
 
 	}
 	
@@ -179,13 +178,13 @@ const login = (nombreUsuario,claveUsuario) => {
 			if (chequeoUsuario.tipo == "admin") {
 				completarSelect()
 				formLogin.style.display = "none"
-				divFormsProductos.style.display = "flex"
+				divFormsQuejas.style.display = "flex"
 				cerrarSesion.style.visibility = "visible"
-				document.getElementById("titulo").innerHTML = `Bienvenidx ${chequeoUsuario.nombre.toUpperCase()}`
+				document.getElementById("titulo").innerHTML = `Hola ${chequeoUsuario.nombre.toUpperCase()}`
 
 			} else {
 
-				document.getElementById("titulo").innerHTML = `Bienvenidx ${chequeoUsuario.nombre.toUpperCase()}`
+				document.getElementById("titulo").innerHTML = `Hola ${chequeoUsuario.nombre.toUpperCase()}`
 				renderizarTienda()
 				cerrarSesion.style.visibility = "visible"
 			}
@@ -206,7 +205,7 @@ const login = (nombreUsuario,claveUsuario) => {
 
 const cerrarSesionFunc = ()=>{
 	formLogin.style.display = "block"
-	divFormsProductos.style.display = "none"
+	divFormsQuejas.style.display = "none"
 	tienda.style.display = "none"
 	localStorage.removeItem("usuarioLogueado")
 }
@@ -226,14 +225,14 @@ btnIngresar.onclick = (e) => {
 	login(inputNombre.value,inputClave.value)
 }
 
-btnEliminarProducto.onclick = (e) => {
+btnEliminarQueja.onclick = (e) => {
 	e.preventDefault()
-	eliminarProducto()
+	eliminarQueja()
 }
 
-btnAgregarProducto.onclick = (e) => {
+btnAgregarQueja.onclick = (e) => {
 	e.preventDefault()
-	agregarProducto()
+	agregarQueja()
 }
 
 cerrarSesion.onclick = ()=>{
