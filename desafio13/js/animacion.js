@@ -1,18 +1,23 @@
 $(document).ready(function(){
-    $("botton").click(function(){
+    $("#btn1").click(function(){
         $("#elemento1").fadeIn();
     });
 });
 $(document).ready(function(){
-    $("botton").click(function(){
+    $("#btn2").click(function(){
         $("#elemento2").fadeOut();
     });
 });
 $(document).ready(function(){
-    $("#btn1").click(function(){
+    $("#btn3").click(function(){
         $("#box").animate({height:"200px"});
     });
-    $("#btn2").click(function(){
+    $("#btn4").click(function(){
         $("#box").animate({height:"100px"});
+    });
+});
+$(document).ready(function(){
+    $("#btn5").click(function(){
+        $("#elemento3").delay("fast").fadeIn();
     });
 });
