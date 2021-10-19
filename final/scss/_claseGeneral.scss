@@ -1,0 +1,233 @@
+@import "color";
+$bg1:#2c55ad;
+$bg2:rgb(187, 49, 49);
+
+@mixin condicion($color){
+    background:($color);
+
+    @if $color == $bg1{
+        color:rgb(255, 0, 0);
+    }
+    @else if $color == $bg2{
+        color:rgb(136, 255, 0);
+    }
+    @else {
+        color: rgb(255, 255, 255);
+    }
+}
+.contenedor{
+    width: 90%;
+	margin: 20px auto;
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: 
+	"contenido1 contenido2 contenido3";
+
+    @for $i from 1 to 3 {
+        .contenidos-#{$i}{width: 2em*$i;}
+    }
+    .contenido1{
+        @include condicion ($bg1);
+        padding: 20px;
+        border-radius: 4px;
+        h1{
+            font-size: 2.5rem;
+            }
+        }
+    .contenido2{
+        @include condicion($bg2);
+        padding: 20px;
+        border-radius: 4px;
+    }
+    .contenido3{
+        padding: 20px;
+        border-radius: 4px;
+    }
+}
+
+
+#carouselExampleCaptions{
+    display:block;
+    margin:auto;
+    width: 75vw;
+}   
+.carousel-inner{
+    display:block;
+    margin:auto;
+    width: 70vw;
+    h2{
+        color: $colorRojo;
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+    p{
+        color: rgb(207, 25, 25);
+        font-size: 1.4rem;
+        font-style: italic;
+    }
+}
+.menuHtml{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+.menuHtml__link--uppercase{
+    text-transform: uppercase;
+}
+.menuHtml__link--capitalize{
+    text-transform: capitalize;
+}
+
+@mixin centralizarTexto($word-spacing, $text-transform, $font-size) {
+    text-align: center;
+    word-spacing: $word-spacing;
+    text-transform: $text-transform;
+    font-size: $font-size;
+}
+.tituloDescriptivo{
+    @include centralizarTexto(15px, capitalize, 2rem)
+}
+.contacto__nombre{
+    @include centralizarTexto(10px, uppercase, 1.5rem)
+}
+
+.textoDescriptivo{
+    color:rgb(228, 226, 226);
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px 10px;
+    margin: 10px 10px;
+    border: transparent hidden 20px;
+}
+.textoCooperTitan{
+    font-style: italic;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 400px;
+    border:hidden transparent 0px;
+    float: right;
+}
+.contenidoCooperTitan{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.accordion{
+    color: $colorNegro;
+    padding: 3vw;
+}
+.contacto{
+    text-align: center;
+    color: rgb(70, 31, 212);
+    font-weight: bold;
+}
+.copyright{
+    text-align: right;
+}
+
+.card-group{
+    padding: 25px;
+    gap: 10vw;
+    margin:auto;
+    width: 85vw;
+    justify-content: space-between;
+    text-align: center;
+    h3{
+        font-weight: bolder;
+    }
+    img{
+        padding: 1vw;
+    }
+    p{
+        color: $colorNegro;
+    }
+}
+
+.gridConcepto{
+    display: grid;
+    margin: 25px;
+    grid-template-columns: repeat(4, 22vw);
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "img1 img1 img1 img1"
+        "img2 img2 txt1 img5"
+        "txt2 img3 img3 txt3"
+        "img6 txt4 img4 img4";
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    img {
+        inline-size: 100%;
+    }
+}
+
+.gridConcepto__hijo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    color: $colorGris;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.gridImg1{
+    grid-area: img1;
+    grid-column: 1/5;
+}
+.gridImg2{
+    grid-area: img2;
+    grid-column: 1/3;
+}
+.gridImg2:hover{
+    transform: scale(1.05);
+}
+.gridImg3{
+    grid-area: img3;
+    grid-column: 2/4;
+}
+.gridImg3:hover{
+    transform: scale(1.05);
+}
+.gridImg4{
+    grid-area: img4;
+    grid-column: 3/5;
+}
+.gridImg4:hover{
+    transform: scale(1.05);
+}
+.gridImg5{
+    grid-area: img5;
+    grid-column: 4/5;
+}
+.gridImg5:hover{
+    transform: scale(1.05);
+}
+.gridImg6{
+    grid-area: img6;
+    grid-column: 1/2;
+}
+.gridImg6:hover{
+    transform: scale(1.05);
+}
+.gridTxt1{
+    grid-area: txt1;    
+    margin: 10px 10px;
+}
+.gridTexto2{
+    grid-area: txt2;
+    grid-column: 1/3;
+    margin: 10px 10px;
+}
+.gridTexto3{
+    grid-area: txt3;
+    margin: 10px 10px;
+}
+.gridTexto4{
+    grid-area: txt4;
+    margin: 10px 10px;
+}

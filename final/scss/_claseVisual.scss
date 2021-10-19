@@ -1,0 +1,82 @@
+@import "color";
+
+@mixin centralizarMedia($ancho) {
+    display:block;
+    margin:5vw auto;
+    width: $ancho;
+}
+.mediaCentralizado{
+    @include centralizarMedia(70vw)
+}
+.abertura__mediaCentralizado{
+    @include centralizarMedia(80vw)
+}
+.gifCentralizado{
+    @include centralizarMedia(65vw)
+}
+.bannerCooperTitan{
+    border: transparent hidden 0px;
+    float: left;
+}
+.preciosYVersiones{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5%;
+}
+.preciosYVersiones__titulo{
+    color: rgb(202, 23, 23);
+}
+.yt-container {
+    position:relative;
+    padding-bottom:30%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+  }
+.yt-container iframe, .yt-container object, .yt-container embed {
+    position:absolute;
+    margin: 0% 26%;
+    width: 48%;
+}
+.fondo{
+    color: rgb(201, 201, 201);
+    font-weight: bolder;
+    background-image: url(../images/fondos/tf2Fondo1.jpg);
+    background-attachment: fixed;
+    opacity: 0.8;
+    /*background-size: 100% 100%;*/
+    background-position-x: center;
+    background-position-y: center;
+}
+.fondo__bannerFrontera{
+    display:block;
+    margin:auto;
+    width: 50vw;
+}
+.fondoSingle{
+    color: rgb(72, 216, 29);
+    background-position-y: 85%;
+    font-weight: bold;
+    opacity: 0.75;
+    background-image: url(../images/fondos/tf2FundoSingle.jpg);
+}
+.fondoDePiloto{
+    background-image: url(../images/fondos/jackFondo1.jpg);
+    background-position-x: right;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    background-size: cover;
+}
+.fondoDeTitan{
+    background-image: url(../images/fondos/fondoTitan.jpg);
+    background-attachment: fixed;
+    opacity: 0.8;
+    background-size: auto;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    font-style: italic;
+    text-align: center;
+    font-weight: bolder;
+}

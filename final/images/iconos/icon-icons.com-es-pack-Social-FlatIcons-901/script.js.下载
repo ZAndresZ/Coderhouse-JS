@@ -1,0 +1,130 @@
+var creative = {};
+var dynamicBuilder = {};
+dynamicBuilder.data = [];
+dynamicBuilder.percentage = 0;
+
+function startAd() {
+  creative.dom = {};
+  creative.dom.mainContainer = document.querySelector('.dynamicAdvertContainer');
+  //
+  // Command to build the data
+  //
+  adkit.onReady(buildData);
+}
+
+function buildData() {
+  //
+  // This url will be injected dynamically from the Sizmek feed
+  //
+  var url = document.getElementById('dco_jsonUrl').innerHTML;
+  if (url != '' && url != undefined) {
+    
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType('application/json');
+    xobj.open('GET', url, true);
+    xobj.onreadystatechange = function() {
+      if (xobj.readyState == 4 && xobj.status == '200') {
+        var data = xobj.responseText;
+        var parsedData = JSON.parse(data);
+        var target = '.dynamicAdvertContainer';
+        //
+        // Builds the dom
+        //
+        
+        buildDOM(target, parsedData);
+        //load external resources
+        loadExternalResources(function() {
+          document.getElementById('loading-screen').style.display = 'none';
+          show();
+        });
+      }
+    };
+    xobj.send(null);
+  }
+}
+
+function loadExternalResources(callback) {
+  // Getting background image url - Regular Expression
+  var srcChecker = /url\(\s*?['"]?\s*?(\S+?)\s*?["']?\s*?\)/i;
+
+  var urls = [];
+  var nodelist = document.querySelectorAll('*');
+
+  function addUniqueUrl(url) {
+    if (urls.indexOf(url) === -1) {
+      urls.push(url);
+    }
+  }
+
+  // find background image urls
+  for(var index = 0; index < nodelist.length; index++){
+    var tagName
+      , computedStyle
+      , backgroundImage
+      , match
+      , tagName = nodelist[index].tagName.toLowerCase();
+
+    if (tagName === 'img') {
+      addUniqueUrl(nodelist[index].src);
+    } else {
+      computedStyle = window.getComputedStyle(nodelist[index], null);
+      backgroundImage = computedStyle.getPropertyValue('background-image');
+      match = srcChecker.exec(backgroundImage); // Returns a result array, or null. ['url("https://s0.2mdn.net...jpg"', 'https://s0.2mdn.net...jpg']
+      if (match) {
+        addUniqueUrl(match[1]);
+      }
+    }
+  }
+
+  if (urls.length == 0) {
+    callback();
+  } else {
+    preloadImages({
+      urls: urls,
+      counter: 0,
+      callback: callback
+    });
+  }
+}
+
+function preloadImages(options) {
+  function imgHandler(e) {
+    var eType = e.type; // eType = 'load' || 'error'
+    if (eType === 'error') {
+      e.target.onerror = null;
+    }
+
+    options.counter++;
+    if (options.counter == options.urls.length) {
+      options.callback();
+    }
+  }
+  for(var index = 0; index < options.urls.length; index++){
+    // create image object
+    var image = new Image();
+    // add image path
+    image.src = options.urls[index];
+    // bind load event
+    image.onload = imgHandler;
+    image.onerror = imgHandler;
+  }
+}
+
+
+function show() {
+  creative.dom.mainContainer.style.display = 'block';
+  //
+  // Begins animation after dom has been constructed
+  //
+  startAnimation(0);
+}
+
+function clickthrough() {
+  EB.clickthrough();
+}
+
+function exitClickHandler(){
+  EB.clickthrough();
+}
+
+window.addEventListener('load', startAd);

@@ -1,0 +1,20 @@
+@import "color";
+#precioRebaja{
+    text-decoration: line-through;
+    color: $colorRojo;
+}
+#precioConDescuento{
+    text-transform: capitalize;
+    color: $colorDorado;
+}
+#sloganEnVersiones{
+    text-transform: capitalize;
+    color: $colorRojo;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    word-spacing: 10px;
+}
+#logoCentralizadoPrincipal{
+    width: 80vw;
+}

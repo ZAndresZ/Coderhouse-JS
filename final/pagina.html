@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Mi pagina</title>
+	
+	
+	<style>
+		#eventos{
+			height: 400px;
+			width: 400px;
+			background: blue;
+		}
+		#inputEventos{
+			margin-top: 20px;
+			height: 40px;
+		}
+	</style>
+
+
+</head>
+
+
+<body>	
+	
+	<h1>Mi negocio</h1>
+
+	<div id="contenedor">
+
+	</div>
+
+	<section>
+		<div class="div-input">
+			<h3>Cargar productos</h3>
+			<label for="">ID</label>
+			<input type="number" placeholder="Ingresa el codigo" id="id">
+			<label for="">Nombre</label>
+			<input type="text" placeholder="Ingresa el nombre" id="nombre">
+			<label for="">Precio</label>
+			<input type="number" placeholder="Ingresa el precio" id="precio">
+			<label for="">Informacion</label>
+			<input type="text" placeholder="Ingresa su informacion" id="info">
+			<button class="btn btn-danger">Cargar</button>
+		</div>
+
+		<div id="contenedorMuestra">
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+				  <h5 class="card-title" id="cardTitle">Card title</h5>
+				  <p class="card-text" id="cardText">aca aparecera la info</p>
+				  <p class="card-text" id="cardPrice">aca aparecera el precio</p>
+				  <a href="#" class="btn btn-primary" id="botonCarga">cargar al sistema</a>
+				</div>
+			  </div>
+		</div>
+
+	</section>
+
+	<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="botonCarrito" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	Ver carrito
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Tu carrito</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body" id = "carritoVista">
+		  ...
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary">Save changes</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+	<div id="app">
+		<h1 id="titulo"></h1>
+	</div>
+    <div class="nombres">
+    </div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script src="js/main.js"></script> 
+	<script src="js/categorias.js"></script>
+	<script src="js/script.js"></script>
+	
+	
+</body>
+</html>

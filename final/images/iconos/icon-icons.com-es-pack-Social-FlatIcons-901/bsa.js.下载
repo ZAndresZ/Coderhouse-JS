@@ -1,0 +1,81 @@
+$(function() {
+    var i = {
+        init: function() {
+            	if(leader_board_bsa){
+			        this.placeholder()
+		
+				$("#bsa-placeholder-search").load("../bsa_leaderboard2.html")
+                $("#bsa-placeholder-search2").load("../bsa_leaderboard.html")
+
+			
+		}
+		
+        },
+        placeholder: function() {
+	   var extra=0;
+	   if(estamos=="search" || estamos=="iconset"){
+	   if(estamos=="iconset")extra=$(".icon-preview").height();
+            if (!(0 < $("#bsa-placeholder-search").length) && 0 !== $(".icon-grid").length) {
+                var t = $(".icon-grid .icon-preview"),
+                    e = Math.round($(".icon-grid").width() / $(".icon-preview").width()),
+                    i = $(window).height() - $(".icon-grid").offset().top - ($(".icon-preview").height()) -extra,
+                    o = Math.ceil(i / $(".icon-preview").height()),
+                    n = Math.floor(t.length / e);
+                n < o && (o = n);
+                var r = e * o,
+                    a = $("<div />", {
+                        id: "bsa-placeholder-search"
+                    });
+                r > t.length && (r = t.length), t.eq(r - 1).after(a)
+            }
+            var retrasar=0;
+            if($( "#bsa-placeholder-search" ).length && estamos=="search")retrasar=$(".icon-preview").height()*2;
+                if (!(0 < $("#bsa-placeholder-search2").length) && 0 !== $(".icon-grid").length && estamos=="search") {
+                    var t = $(".icon-grid .icon-preview"),
+                        e = Math.round($(".icon-grid").width() / $(".icon-preview").width()),
+                        i = $(window).height() - $(".icon-grid").offset().top + retrasar,
+                        o = Math.ceil(i / $(".icon-preview").height()),
+                        n = Math.floor(t.length / e);
+                    n < o && (o = n);
+                    var r = e * o,
+                        a = $("<div />", {
+                            id: "bsa-placeholder-search2"
+                        });
+                    r > t.length && (r = t.length), t.eq(r - 1).after(a)
+                }
+        }
+	else{
+		if (!(0 < $("#bsa-placeholder-search").length) && 0 !== $(".container-fluid").length) {
+                var t = $(".container-fluid .details-image-preview"),
+                    e = Math.round($(".container-fluid").width() / $(".details-image-preview").width()),
+                    i = $(".container-fluid").offset().top - ($(".details-image-preview").height()*3),
+                    o = Math.ceil(i / $(".details-image-preview").height()),
+                    n = Math.floor(t.length / e);
+                n < o && (o = n);
+                var r = e * o,
+                    a = $("<div />", {
+                        id: "bsa-placeholder-search"
+                    });
+                r > t.length && (r = t.length), t.eq(r - 1).after(a)
+            }
+	}
+	}
+    };
+    i.init(), $(document).on("search.results", function() {
+        i.init()
+    })
+});
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
